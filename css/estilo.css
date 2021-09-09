@@ -1,0 +1,31 @@
+h2
+{
+	margin-top: 0;
+}
+.container
+{
+	margin: 10px;
+	padding: 20px;
+	width: 400px;
+	border: solid black 3px;
+}
+#container
+{
+	display: inline-grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(4, auto);
+}
+.campo
+{
+	margin: 5px;
+}
+textarea
+{
+	display: block;
+	width: 100%;
+}
+#guardado
+{
+	margin-top: 20px;
+	text-align: center;
+}
