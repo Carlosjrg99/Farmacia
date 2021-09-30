@@ -57,41 +57,43 @@
 		    </center>
 		</form>
 	</div>
-	<div>
-	<table border="1" class="container">
-	<tr>
-	    <th> Id </th>
-	    <th> Nombre </th>
-	    <th> Laboratorio </th>
-	    <th> Stock </th>
-	    <th> Precio </th>
-	    <th> Observación </th>
-	</tr>
-	<?php
-		if(isset($_POST['Buscar']))
-		{
-			$laboratorio = $_POST['laboratorioBuscar'];
-		    $sql = "SELECT cod_far, nom_far, lab_far, sto_far, pre_far, obs_far FROM farmaco WHERE lab_far = '$laboratorio' ORDER BY sto_far DESC";
-		}
-		else
-		{
-	    	$sql = "SELECT cod_far, nom_far, lab_far, sto_far, pre_far, obs_far FROM farmaco ORDER BY sto_far DESC";	
-		}
-	    $listar = $mysqli->query($sql);
-	    while ( $registro = $listar->fetch_array() )
-	    {
-	?>
-	<tr>
-	    <td> <?php echo $registro['cod_far'] ?> </td>
-	    <td> <a href="mantenedorFarmacos.php?cod_far=<?php echo $registro['cod_far'] ?>"><?php echo $registro['nom_far'] ?></a> </td>
-	    <td> <?php echo $registro['lab_far'] ?> </td>
-	    <td> <?php echo $registro['sto_far'] ?> </td>
-	    <td> <?php echo $registro['pre_far'] ?> </td>
-	    <td> <?php echo $registro['obs_far'] ?> </td>
-	</tr>
-	<?php } ?>
+
+	<div class="container">
+	<table border="1">
+		<tr>
+		    <th> Id </th>
+		    <th> Nombre </th>
+		    <th> Laboratorio </th>
+		    <th> Stock </th>
+		    <th> Precio </th>
+		    <th> Observación </th>
+		</tr>
+		<?php
+			if(isset($_POST['Buscar']))
+			{
+				$laboratorio = $_POST['laboratorioBuscar'];
+			    $sql = "SELECT cod_far, nom_far, lab_far, sto_far, pre_far, obs_far FROM farmaco WHERE lab_far = '$laboratorio' ORDER BY sto_far DESC";
+			}
+			else
+			{
+		    	$sql = "SELECT cod_far, nom_far, lab_far, sto_far, pre_far, obs_far FROM farmaco ORDER BY sto_far DESC";	
+			}
+		    $listar = $mysqli->query($sql);
+		    while ( $registro = $listar->fetch_array() )
+		    {
+		?>
+		<tr>
+		    <td> <?php echo $registro['cod_far'] ?> </td>
+		    <td> <a href="mantenedorFarmacos.php?cod_far=<?php echo $registro['cod_far'] ?>"><?php echo $registro['nom_far'] ?></a> </td>
+		    <td> <?php echo $registro['lab_far'] ?> </td>
+		    <td> <?php echo $registro['sto_far'] ?> </td>
+		    <td> <?php echo $registro['pre_far'] ?> </td>
+		    <td> <?php echo $registro['obs_far'] ?> </td>
+		</tr>
+		<?php } ?>
 	</table>
 	</div>
+
 	<div class="container">
 		<h2>AGREGUE UN NUEVO FARMACO</h2>
 		<form method="post" action="mantenedorFarmacos.php" onSubmit="return validaGuardar();">
